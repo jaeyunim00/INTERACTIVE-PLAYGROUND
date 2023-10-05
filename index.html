@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>test</h1>
+    <div class="box">
+      <img src="./butterfly.gif" />
+    </div>
+  </body>
+  <script defer>
+    const h1 = document.querySelector("h1");
+    const box = document.querySelector(".box");
+
+    let x = 0;
+    let y = 0;
+
+    let targetX = 0;
+    let targetY = 0;
+    let speed = 0.01;
+
+    window.addEventListener("mousemove", (event) => {
+      x = event.pageX;
+      y = event.pageY;
+      h1.innerText = `x: ${event.pageX} y: ${event.pageY}`;
+    });
+
+    const loop = () => {
+      targetX += (x - targetX) * speed;
+      targetY += (y - targetY) * speed;
+
+      // console.log(targetX, targetY);
+
+      box.style.top = `${targetY.toFixed(1)}px`;
+      box.style.left = `${targetX.toFixed(1)}px`;
+      window.requestAnimationFrame(loop);
+      // console.log(1);
+    };
+    loop();
+  </script>
+</html>

@@ -1,0 +1,20 @@
+body {
+  background-color: #13adcc;
+  height: 300vh;
+}
+h1 {
+  font-size: 50px;
+  padding: 20px;
+}
+.box {
+  width: 60px;
+  height: 60px;
+  /* background-color: black; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.box img {
+  width: 160px;
+}
