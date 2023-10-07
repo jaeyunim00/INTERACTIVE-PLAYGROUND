@@ -8,26 +8,49 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>test</h1>
-    <div class="box">
-      <img src="./butterfly.gif" />
+    <nav style="padding: 50px">
+      <a href="./sirup.html">second page</a>
+    </nav>
+    <div class="cursorItem">
+      <div class="circle"></div>
+    </div>
+    <div class="container">
+      <div class="question">
+        <p>Are you 21 or older?</p>
+      </div>
+      <div class="answer">
+        <span>Yes</span>
+        <p class="line"></p>
+        <span>No</span>
+      </div>
     </div>
   </body>
   <script defer>
     const h1 = document.querySelector("h1");
-    const box = document.querySelector(".box");
+    const box = document.querySelector(".cursorItem");
+    const circle = box.querySelector(".circle");
+    const buttonAll = document.querySelectorAll("span");
 
     let x = 0;
     let y = 0;
 
     let targetX = 0;
     let targetY = 0;
-    let speed = 0.01;
+    let speed = 0.1;
 
     window.addEventListener("mousemove", (event) => {
       x = event.pageX;
       y = event.pageY;
-      h1.innerText = `x: ${event.pageX} y: ${event.pageY}`;
+    });
+
+    buttonAll.forEach((item) => {
+      // console.log(item);
+      item.addEventListener("mouseenter", () => {
+        circle.style.transform = "scale(0.3)";
+      });
+      item.addEventListener("mouseleave", () => {
+        circle.style.transform = "scale(1)";
+      });
     });
 
     const loop = () => {
@@ -36,8 +59,7 @@
 
       // console.log(targetX, targetY);
 
-      box.style.top = `${targetY.toFixed(1)}px`;
-      box.style.left = `${targetX.toFixed(1)}px`;
+      box.style.transform = `translate(${targetX}px, ${targetY}px)`;
       window.requestAnimationFrame(loop);
       // console.log(1);
     };
